@@ -6,109 +6,58 @@
  * @flow strict-local
  */
 
+import 'react-native-gesture-handler';
 import React from 'react';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   SafeAreaView,
+  Text,
   StyleSheet,
   ScrollView,
   View,
-  Text,
+  Image,
+  TextInput,
   StatusBar,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './components/HomeScreen';
+import DetailScreen from './components/DetailScreen';
+import ProfileScreen from './components/ProfileScreen';
+import AnimateDemo from './components/AnimateDemo';
+import AnimateDecay from './components/AnimateDecay';
+import AnimateSpring from './components/AnimateSpring';
+import AnimateTiming from './components/AnimateTiming';
+import AnimateParallel from './components/AnimateParallel';
+import AnimateSequence from './components/AnimateSequence';
+import FetchDataDemo from './components/FetchDataDemo';
+// import Navi from "./components/nav";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Stack = createStackNavigator();
 
-const App: () => React$Node = () => {
+function App() {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{title: 'Home Overview'}}
+          />
+          <Stack.Screen name="Detail" component={DetailScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="AnimateDemo" component={AnimateDemo} />
+          <Stack.Screen name="AnimateDecay" component={AnimateDecay} />
+          <Stack.Screen name="AnimateSpring" component={AnimateSpring} />
+          <Stack.Screen name="AnimateTiming" component={AnimateTiming} />
+          <Stack.Screen name="AnimateParallel" component={AnimateParallel} />
+          <Stack.Screen name="AnimateSequence" component={AnimateSequence} />
+          <Stack.Screen name="HTTPDemo" component={FetchDataDemo} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+}
 
 export default App;
