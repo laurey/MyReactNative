@@ -31,6 +31,7 @@ import AnimateTiming from './components/AnimateTiming';
 import AnimateParallel from './components/AnimateParallel';
 import AnimateSequence from './components/AnimateSequence';
 import FetchDataDemo from './components/FetchDataDemo';
+
 // import Navi from "./components/nav";
 
 const Stack = createStackNavigator();

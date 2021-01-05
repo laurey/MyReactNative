@@ -20,13 +20,13 @@ export default class AnimateDecay extends Component {
       },
       onPanResponderMove: Animated.event(
         [null, {dx: this.animatedValue.x, dy: this.animatedValue.y}],
-        {useNativeDriver: true},
+        {useNativeDriver: false},
       ),
       onPanResponderRelease: (e, gestureState) => {
         this.animatedValue.flattenOffset();
         Animated.decay(this.animatedValue, {
           deceleration: 0.997,
-          useNativeDriver: true,
+          useNativeDriver: false,
           velocity: {x: gestureState.vx, y: gestureState.vy},
         }).start();
       },

@@ -16,7 +16,7 @@ class HomeScreen extends Component {
         </Text>
         <Button
           title="Go to Jane's profile"
-          onPress={() => navigate('Profile', {name: 'Jane'})}
+          onPress={() => navigate('Profile', {name: 'Jane', tab: 'Discover'})}
         />
         <Button
           title="Go to Http Demo"
