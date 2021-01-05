@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {Text, Button} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Search from './Search';
 
 class HomeScreen extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View
+      <SafeAreaView
         style={{
           flex: 1,
         }}>
@@ -19,11 +20,11 @@ class HomeScreen extends Component {
           onPress={() => navigate('Profile', {name: 'Jane', tab: 'Discover'})}
         />
         <Button
-          title="Go to Http Demo"
+          title="Go to Http1122 Demo"
           onPress={() => navigate('HTTPDemo', {name: 'http'})}
         />
         <Search />
-      </View>
+      </SafeAreaView>
     );
   }
 }

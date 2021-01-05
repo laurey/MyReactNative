@@ -8,42 +8,67 @@
 
 import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen';
-import DetailScreen from './components/DetailScreen';
+import AboutScreen from './components/AboutScreen';
 import ProfileScreen from './components/ProfileScreen';
-import AnimateDemo from './components/AnimateDemo';
-import AnimateDecay from './components/AnimateDecay';
-import AnimateSpring from './components/AnimateSpring';
-import AnimateTiming from './components/AnimateTiming';
-import AnimateParallel from './components/AnimateParallel';
-import AnimateSequence from './components/AnimateSequence';
-import FetchDataDemo from './components/FetchDataDemo';
+import SettingScreen from './components/SettingScreen';
 
-const Stack = createStackNavigator();
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const Tab = createBottomTabNavigator();
 
 function App() {
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
+        <Tab.Navigator initialRouteName="Home">
+          <Tab.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: 'Home Overview'}}
+            options={{
+              tabBarLabel: 'Home',
+              tabBarIcon: ({color, size}) => (
+                <Icon name="home" color={color} size={size} />
+              ),
+            }}
           />
-          <Stack.Screen name="Detail" component={DetailScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
-          <Stack.Screen name="AnimateDemo" component={AnimateDemo} />
-          <Stack.Screen name="AnimateDecay" component={AnimateDecay} />
-          <Stack.Screen name="AnimateSpring" component={AnimateSpring} />
-          <Stack.Screen name="AnimateTiming" component={AnimateTiming} />
-          <Stack.Screen name="AnimateParallel" component={AnimateParallel} />
-          <Stack.Screen name="AnimateSequence" component={AnimateSequence} />
-          <Stack.Screen name="HTTPDemo" component={FetchDataDemo} />
-        </Stack.Navigator>
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              tabBarLabel: 'Profile',
+              tabBarIcon: ({color, size}) => (
+                <Icon name="user" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Setting"
+            component={SettingScreen}
+            options={{
+              tabBarLabel: 'Setting',
+              tabBarIcon: ({color, size}) => (
+                <Icon name="gear" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="About"
+            component={AboutScreen}
+            options={{
+              tabBarLabel: 'About',
+              tabBarIcon: ({color, size}) => (
+                <Icon name="info" color={color} size={size} />
+              ),
+            }}
+          />
+        </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
