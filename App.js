@@ -9,16 +9,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  ScrollView,
-  View,
-  Image,
-  TextInput,
-  StatusBar,
-} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen';
@@ -31,8 +21,6 @@ import AnimateTiming from './components/AnimateTiming';
 import AnimateParallel from './components/AnimateParallel';
 import AnimateSequence from './components/AnimateSequence';
 import FetchDataDemo from './components/FetchDataDemo';
-
-// import Navi from "./components/nav";
 
 const Stack = createStackNavigator();
 
