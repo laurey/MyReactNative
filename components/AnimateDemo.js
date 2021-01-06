@@ -30,7 +30,7 @@ export default class AnimateDemo extends Component {
           onPress={() => navigate('AnimateDecay', {name: 'decay'})}
         />
         <Button
-          title="Paralle"
+          title="Parallel"
           onPress={() => navigate('AnimateParallel', {name: 'parallel'})}
         />
         <Button

@@ -1,45 +1,66 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 
-class DetailsScreen extends Component {
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  txt: {
+    padding: 16,
+    color: '#20232a',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  button: {
+    height: 36,
+    lineHeight: 30,
+    margin: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    color: '#fff',
+    borderRadius: 4,
+    backgroundColor: '#2296F4',
+    alignSelf: 'center',
+    textAlign: 'center',
+    overflow: 'hidden',
+  },
+});
+
+class DetailScreen extends Component {
   render() {
     const {navigation, route} = this.props;
-    const {now, name, otherParam} = route.params;
+    const {now, name, otherParam} = route.params || {};
 
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'space-around',
-        }}>
-        <Text>The ItemId is: {now}</Text>
+      <View style={[styles.flex, styles.container]}>
+        <Text>now is: {now}</Text>
         <Text>The otherParam is: {otherParam}</Text>
         <Text>
           Hi!
-          {name ? (
-            <Text style={{fontWeight: 'bold', fontSize: 18, margin: 10}}>
-              {name}
-            </Text>
-          ) : (
-            'Anonymous'
-          )}
-          . This is Detail Screen
+          <Text style={styles.txt}>{name ? name : 'Anonymous'}</Text>. This is
+          Detail Screen
         </Text>
-        <Button
+        <Text
+          style={styles.button}
           title="Go to Detail... again"
-          onPress={() => navigation.navigate('Detail')}
-        />
-        <Button
-          title="Go to Detail with push... again"
+          onPress={() => navigation.navigate('Detail')}>
+          Go to Detail... again
+        </Text>
+        <Text
+          style={styles.button}
           onPress={() =>
             navigation.push('Detail', {
-              name,
+              name: 'BBQ',
               now,
               otherParam: '100',
             })
-          }
-        />
+          }>
+          To Detail
+        </Text>
         <Button
           title="Go to Home"
           onPress={() => navigation.navigate('Home')}
@@ -50,4 +71,4 @@ class DetailsScreen extends Component {
   }
 }
 
-export default DetailsScreen;
+export default DetailScreen;

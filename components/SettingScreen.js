@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {View, Text, Button} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 class SettingScreen extends Component {
   render() {
     const {navigation} = this.props;
 
     return (
-      <View
+      <SafeAreaView
         style={{
           flex: 1,
           alignItems: 'center',
@@ -29,7 +30,7 @@ class SettingScreen extends Component {
           onPress={() => navigation.navigate('Home')}
         />
         <Button title="Go back" onPress={() => navigation.goBack()} />
-      </View>
+      </SafeAreaView>
     );
   }
 }

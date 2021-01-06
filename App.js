@@ -12,14 +12,13 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeScreen from './components/HomeScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import AboutScreen from './components/AboutScreen';
 import ProfileScreen from './components/ProfileScreen';
-import SettingScreen from './components/SettingScreen';
-
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import HomeStackScreen from './components/HomeStackScreen';
+import SettingStackScreen from './components/SettingStackScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +29,7 @@ function App() {
         <Tab.Navigator initialRouteName="Home">
           <Tab.Screen
             name="Home"
-            component={HomeScreen}
+            component={HomeStackScreen}
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({color, size}) => (
@@ -50,7 +49,7 @@ function App() {
           />
           <Tab.Screen
             name="Setting"
-            component={SettingScreen}
+            component={SettingStackScreen}
             options={{
               tabBarLabel: 'Setting',
               tabBarIcon: ({color, size}) => (
